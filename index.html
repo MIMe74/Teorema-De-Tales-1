@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Teorema de Tales · Actividad interactiva</title>
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);--bg:#f6f7fb;--card:#fff;--tx:#1d2433;--mu:#5b6478;--ac:#2456d6;--ac2:#e8eefc;--ok:#1a8a4a;--ko:#c0392b;--bd:#d9deea;--sky:#dbeafe;--gr:#d9f0d0}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#12151d;--card:#1b202c;--tx:#e8ecf5;--mu:#9aa4bb;--ac:#7aa2ff;--ac2:#242c44;--ok:#4cc985;--ko:#ff7b6b;--bd:#2f3648;--sky:#1f2f4d;--gr:#23361f}}
+:root[data-theme="dark"]{--bg:#12151d;--card:#1b202c;--tx:#e8ecf5;--mu:#9aa4bb;--ac:#7aa2ff;--ac2:#242c44;--ok:#4cc985;--ko:#ff7b6b;--bd:#2f3648;--sky:#1f2f4d;--gr:#23361f}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+.w{max-width:820px;margin:0 auto;padding:16px}
+h1{font-size:1.6rem;margin:.2em 0}h2{font-size:1.25rem;margin:.2em 0 .5em}h3{font-size:1.05rem;margin:.8em 0 .3em}
+.sub{color:var(--mu);margin:0 0 12px}
+nav{display:flex;gap:6px;flex-wrap:wrap;margin:12px 0}
+nav button{flex:1;min-width:110px;padding:10px;border:1px solid var(--bd);background:var(--card);color:var(--tx);border-radius:10px;font:inherit;cursor:pointer}
+nav button.on{background:var(--ac);color:#fff;border-color:var(--ac)}
+.c{background:var(--card);border:1px solid var(--bd);border-radius:14px;padding:16px;margin-bottom:14px}
+.eq{background:var(--ac2);border-radius:10px;padding:10px 14px;margin:8px 0;overflow-x:auto;font-size:1.05rem}
+.fr{display:inline-block;text-align:center;vertical-align:middle;margin:0 3px}
+.fr i{display:block;font-style:normal;padding:0 4px}.fr i:first-child{border-bottom:1.5px solid currentColor}
+svg{width:100%;height:auto;max-width:100%;display:block;border-radius:10px;background:var(--sky)}
+.t{fill:var(--tx);font:13px system-ui,sans-serif}
+.fig{margin:10px 0}.cap{font-size:.85rem;color:var(--mu);text-align:center;margin-top:4px}
+.sec{display:none}.sec.on{display:block}
+label{display:block;font-weight:600;margin:10px 0 4px}
+input[type=text]{width:100%;padding:10px;border:1px solid var(--bd);border-radius:8px;background:var(--bg);color:var(--tx);font:inherit}
+.b{background:var(--ac);color:#fff;border:0;border-radius:10px;padding:11px 20px;font:inherit;cursor:pointer;margin-top:12px}
+.b:disabled{opacity:.5;cursor:not-allowed}
+.q{border-top:1px solid var(--bd);padding:12px 0}
+.q p{margin:0 0 6px;font-weight:600}
+.o{display:block;padding:8px 10px;margin:4px 0;border:1px solid var(--bd);border-radius:8px;cursor:pointer;font-weight:400}
+.o.ok{border-color:var(--ok);background:color-mix(in srgb,var(--ok) 15%,transparent)}
+.o.ko{border-color:var(--ko);background:color-mix(in srgb,var(--ko) 15%,transparent)}
+.msg{padding:10px 12px;border-radius:8px;background:var(--ac2);margin:8px 0}
+.ref{font-size:.9rem;color:var(--mu);padding-left:1.6em;text-indent:-1.6em;margin:.4em 0}
+a{color:var(--ac);word-break:break-all}
+.tag{display:inline-block;font-size:.75rem;background:var(--ac2);color:var(--ac);padding:2px 8px;border-radius:99px}
+</style>
+</head>
+<body>
+<div class="w">
+<h1>📐 Teorema de Tales</h1>
+<p class="sub">Matemáticas · Nivel medio superior · Teoría, situaciones reales y evaluación</p>
+<nav id="nav">
+<button data-s="teo" class="on">1. Teoría</button>
+<button data-s="eje">2. Situaciones reales</button>
+<button data-s="eva">3. Evaluación</button>
+</nav>
+
+<section id="teo" class="sec on">
+<div class="c">
+<h2>¿Qué dice el teorema?</h2>
+<p>Tales de Mileto (siglo VI a. C.) fue uno de los primeros en usar la proporcionalidad para medir cosas que no se pueden alcanzar directamente. Su idea aparece en los <i>Elementos</i> de Euclides (Libro VI) y hoy se enseña como el <b>Teorema de Tales</b> (Baldor, 2004; Heath, 1956).</p>
+<div class="msg"><b>Teorema.</b> Si una recta es <b>paralela a un lado</b> de un triángulo y corta a los otros dos lados, entonces los divide en <b>segmentos proporcionales</b>.</div>
+<div class="fig">
+<svg viewBox="0 0 400 200" role="img" aria-label="Triángulo ABC con recta DE paralela a BC">
+<polygon points="200,15 60,175 340,175" fill="none" stroke="var(--ac)" stroke-width="2.5"/>
+<line x1="130" y1="95" x2="270" y2="95" stroke="var(--ko)" stroke-width="2.5"/>
+<circle cx="130" cy="95" r="3.5" fill="var(--ko)"/><circle cx="270" cy="95" r="3.5" fill="var(--ko)"/>
+<text class="t" x="196" y="11">A</text><text class="t" x="42" y="185">B</text><text class="t" x="346" y="185">C</text>
+<text class="t" x="108" y="93">D</text><text class="t" x="277" y="93">E</text>
+<text class="t" x="185" y="112" fill="var(--ko)">DE ∥ BC</text>
+</svg>
+<div class="cap">Figura 1. La recta DE es paralela al lado BC.</div>
+</div>
+<p>Si DE ∥ BC, se cumplen estas proporciones:</p>
+<div class="eq">
+<span class="fr"><i>AD</i><i>DB</i></span> = <span class="fr"><i>AE</i><i>EC</i></span> &nbsp;&nbsp;y&nbsp;&nbsp;
+<span class="fr"><i>AD</i><i>AB</i></span> = <span class="fr"><i>AE</i><i>AC</i></span> = <span class="fr"><i>DE</i><i>BC</i></span>
+</div>
+<h3>Otras formas de verlo</h3>
+<p><b>Rectas paralelas cortadas por transversales.</b> Si tres o más rectas paralelas son cortadas por dos transversales, los segmentos que forman en una transversal son proporcionales a los de la otra: <span class="fr"><i>AB</i><i>BC</i></span> = <span class="fr"><i>DE</i><i>EF</i></span>.</p>
+<p><b>Recíproco.</b> Si una recta corta dos lados de un triángulo y los divide proporcionalmente (AD/DB = AE/EC), entonces esa recta es paralela al tercer lado.</p>
+<h3>Cómo resolver un problema</h3>
+<p>1) Identifica las rectas paralelas. 2) Escribe la proporción con segmentos correspondientes (arriba con arriba, abajo con abajo). 3) Multiplica en cruz y despeja la incógnita.</p>
+</div>
+<div class="c">
+<h2>🔗 Ruta digital</h2>
+<p>Estos recursos te ayudan a ver el Teorema de Tales en acción. Revísalos antes de la evaluación: las preguntas 9 a 12 están relacionadas con ellos.</p>
+<p><b>Tales y la altura de la Gran Pirámide de Keops.</b> Artículo para recordar cómo se usó el Teorema de Tales para calcular esa altura.<br>
+<a href="https://didacteca.digital/recurso/6968296ba435e3ba74ee0934" target="_blank" rel="noopener noreferrer">didacteca.digital/recurso/6968296ba435e3ba74ee0934</a></p>
+<p><b>Eratóstenes, las sombras y la curvatura de la Tierra.</b> Video en el que Carl Sagan explica cómo, con sombras y deducción, Eratóstenes concluyó que la Tierra es, cuando menos, curva.<br>
+<a href="https://didacteca.digital/recurso/6968296ba435e3ba74ee0946" target="_blank" rel="noopener noreferrer">didacteca.digital/recurso/6968296ba435e3ba74ee0946</a></p>
+</div>
+<div class="c">
+<h3 style="margin-top:0">Referencias</h3>
+<p class="ref">Baldor, A. (2004). <i>Geometría plana y del espacio y trigonometría</i>. Publicaciones Cultural.</p>
+<p class="ref">Heath, T. L. (1956). <i>The thirteen books of Euclid's Elements</i> (2.ª ed., Vol. 2). Dover Publications.</p>
+</div>
+</section>
+
+<section id="eje" class="sec">
+<div class="c">
+<span class="tag">Situación 1</span>
+<h2>La altura de un poste por su sombra</h2>
+<p>A la misma hora, los rayos del sol llegan con el mismo ángulo. Así se forman dos triángulos semejantes. Una persona de 1.7 m proyecta una sombra de 2 m; el poste proyecta una sombra de 8 m. ¿Cuánto mide el poste?</p>
+<div class="fig">
+<svg viewBox="0 0 400 160" role="img" aria-label="Persona y poste con sus sombras">
+<circle cx="34" cy="26" r="14" fill="#f5c542"/>
+<g stroke="#f5c542" stroke-width="2"><line x1="34" y1="4" x2="34" y2="0"/><line x1="56" y1="26" x2="62" y2="26"/><line x1="50" y1="42" x2="55" y2="47"/><line x1="50" y1="10" x2="55" y2="5"/></g>
+<rect x="0" y="130" width="400" height="30" fill="var(--gr)"/>
+<line x1="250" y1="130" x2="250" y2="30" stroke="var(--tx)" stroke-width="5"/>
+<line x1="90" y1="130" x2="90" y2="105" stroke="var(--tx)" stroke-width="5"/><circle cx="90" cy="98" r="7" fill="var(--tx)"/>
+<line x1="250" y1="130" x2="346" y2="130" stroke="var(--mu)" stroke-width="5"/>
+<line x1="90" y1="130" x2="114" y2="130" stroke="var(--mu)" stroke-width="5"/>
+<line x1="90" y1="105" x2="114" y2="130" stroke="#e0a800" stroke-dasharray="4"/>
+<line x1="250" y1="30" x2="346" y2="130" stroke="#e0a800" stroke-dasharray="4"/>
+<text class="t" x="255" y="80">h = ?</text><text class="t" x="96" y="80">1.7 m</text>
+<text class="t" x="92" y="150">2 m</text><text class="t" x="285" y="150">8 m</text>
+</svg>
+<div class="cap">Figura 2. Dos triángulos rectángulos semejantes formados por el sol.</div>
+</div>
+<div class="eq"><span class="fr"><i>h</i><i>1.7</i></span> = <span class="fr"><i>8</i><i>2</i></span> → h = 1.7 · 4 = <b>6.8 m</b></div>
+</div>
+
+<div class="c">
+<span class="tag">Situación 2</span>
+<h2>Soportes verticales de una rampa de taller</h2>
+<p>Una rampa sube 1.2 m a lo largo de 6 m horizontales. Se coloca un soporte vertical a 2 m del inicio. Los soportes son paralelos a la pared final, así que se aplica Tales. ¿Qué altura tiene ese soporte?</p>
+<div class="fig">
+<svg viewBox="0 0 400 170" role="img" aria-label="Rampa con soporte vertical">
+<rect x="0" y="140" width="400" height="30" fill="var(--gr)"/>
+<polygon points="30,140 330,140 330,40" fill="none" stroke="var(--ac)" stroke-width="3"/>
+<line x1="130" y1="140" x2="130" y2="107" stroke="var(--ko)" stroke-width="4"/>
+<text class="t" x="336" y="95">1.2 m</text><text class="t" x="136" y="128" fill="var(--ko)">x = ?</text>
+<text class="t" x="70" y="158">2 m</text><text class="t" x="200" y="158">6 m (total)</text>
+<line x1="30" y1="150" x2="130" y2="150" stroke="var(--mu)"/>
+</svg>
+<div class="cap">Figura 3. Rampa de taller con un soporte paralelo a la pared.</div>
+</div>
+<div class="eq"><span class="fr"><i>x</i><i>1.2</i></span> = <span class="fr"><i>2</i><i>6</i></span> → x = 1.2 · (1/3) = <b>0.4 m</b></div>
+</div>
+
+<div class="c">
+<span class="tag">Situación 3</span>
+<h2>Calles paralelas entre dos avenidas</h2>
+<p>Tres calles paralelas cruzan dos avenidas. En la avenida A, las cuadras miden 60 m y 90 m. En la avenida B, la primera cuadra mide 80 m. ¿Cuánto mide la segunda cuadra en la avenida B?</p>
+<div class="fig">
+<svg viewBox="0 0 400 190" role="img" aria-label="Tres calles paralelas y dos avenidas">
+<rect width="400" height="190" fill="var(--sky)"/>
+<g stroke="var(--mu)" stroke-width="7"><line x1="0" y1="35" x2="400" y2="35"/><line x1="0" y1="85" x2="400" y2="85"/><line x1="0" y1="160" x2="400" y2="160"/></g>
+<g stroke="var(--ac)" stroke-width="7"><line x1="63" y1="5" x2="105" y2="188"/><line x1="283" y1="5" x2="345" y2="188"/></g>
+<text class="t" x="20" y="62">60 m</text><text class="t" x="20" y="127">90 m</text>
+<text class="t" x="300" y="62">80 m</text><text class="t" x="300" y="127" fill="var(--ko)">x = ?</text>
+<text class="t" x="70" y="20">Avenida A</text><text class="t" x="290" y="20">Avenida B</text>
+</svg>
+<div class="cap">Figura 4. Plano de un cruce de calles (no está a escala).</div>
+</div>
+<div class="eq"><span class="fr"><i>60</i><i>90</i></span> = <span class="fr"><i>80</i><i>x</i></span> → x = (90 · 80) / 60 = <b>120 m</b></div>
+</div>
+</section>
+
+<section id="eva" class="sec">
+<div class="c" id="reg">
+<h2>Registro</h2>
+<p class="sub">Tienes <b>2 oportunidades</b>. Se guarda la calificación más alta. La evaluación tiene 12 preguntas de opción múltiple: 4 de teoría, 4 de ejercicios y 4 de los recursos de la Ruta digital (revísalos antes de comenzar). Cada pregunta vale lo mismo y el total es de 10 puntos.</p>
+<label for="ap">Apellido paterno</label><input type="text" id="ap" autocomplete="off">
+<label for="am">Apellido materno</label><input type="text" id="am" autocomplete="off">
+<label for="nm">Nombre(s)</label><input type="text" id="nm" autocomplete="off">
+<div id="rm"></div>
+<button class="b" id="go">Comenzar evaluación</button>
+</div>
+<div class="c" id="ex" style="display:none">
+<h2 id="who"></h2><p class="sub" id="att"></p>
+<div id="qs"></div>
+<button class="b" id="send">Enviar respuestas</button>
+<div id="res"></div>
+</div>
+</section>
+</div>
+
+<script>
+var nav=document.getElementById('nav');
+nav.addEventListener('click',function(e){var s=e.target.getAttribute('data-s');if(!s)return;
+document.querySelectorAll('.sec').forEach(function(x){x.classList.toggle('on',x.id===s)});
+nav.querySelectorAll('button').forEach(function(b){b.classList.toggle('on',b===e.target)});window.scrollTo(0,0)});
+
+var Q=[
+["Si DE ∥ BC en el triángulo ABC (D en AB, E en AC), ¿qué proporción es correcta?",["AD/DB = AE/EC","AD/DB = EC/AE","AD/AB = DB/AC","DE/BC = AD/DB"],0],
+["¿Qué condición es indispensable para aplicar el Teorema de Tales en un triángulo?",["Que el triángulo sea rectángulo","Que una recta sea paralela a uno de los lados","Que los tres lados midan igual","Que la recta pase por un vértice"],1],
+["Si en un triángulo ABC se cumple AD/DB = AE/EC, ¿qué se concluye (recíproco)?",["Que el triángulo es isósceles","Que DE es perpendicular a BC","Que DE es paralela a BC","Que AD = AE"],2],
+["Tres rectas paralelas cortan a dos transversales. ¿Qué se cumple?",["Los segmentos correspondientes son proporcionales","Los segmentos son siempre iguales","Las transversales son paralelas","Los ángulos suman 360°"],0],
+["En un triángulo ABC, DE ∥ BC. Si AD = 3 cm, DB = 6 cm y AE = 4 cm, ¿cuánto mide EC?",["2 cm","6 cm","8 cm","12 cm"],2],
+["Una niña de 1.5 m proyecta una sombra de 1 m. En ese momento, un árbol proyecta una sombra de 6 m. ¿Qué altura tiene el árbol?",["4 m","7.5 m","9 m","12 m"],2],
+["Tres paralelas cortan a dos transversales. En una, los segmentos miden AB = 4 y BC = 6. En la otra, DE = 10. ¿Cuánto mide EF?",["12","15","20","6.67"],1],
+["En un triángulo ABC, DE ∥ BC, con D en AB. Si AD = 2, AB = 6 y DE = 5, ¿cuánto mide BC?",["10","12","15","7.5"],2],
+["En el método de Tales para medir la pirámide de Keops, ¿por qué se forman dos triángulos semejantes?",["Porque los rayos del Sol llegan casi paralelos y el bastón y la pirámide son verticales","Porque el bastón y la pirámide miden lo mismo","Porque la sombra siempre mide igual que el objeto","Porque Tales midió los ángulos con un transportador"],0],
+["Un bastón de 1.5 m proyecta una sombra de 2 m. A la misma hora, la sombra de la pirámide, medida desde el centro de su base, mide 180 m. ¿Qué altura tiene la pirámide?",["90 m","120 m","135 m","240 m"],2],
+["Al mediodía del solsticio de verano, en Siena los objetos verticales no proyectaban sombra, pero en Alejandría sí. ¿Qué concluyó Eratóstenes?",["Que Alejandría estaba más cerca del Sol","Que el Sol cambiaba de posición de una ciudad a otra","Que Siena siempre estaba en sombra","Que la Tierra no es plana: su superficie es curva"],3],
+["Eratóstenes midió en Alejandría un ángulo de unos 7.2° entre los rayos del Sol y la vertical. Como una vuelta completa son 360°, ¿qué fracción de la circunferencia terrestre separa Alejandría de Siena?",["1/25","1/50","1/100","1/360"],1]
+];
+var $=function(i){return document.getElementById(i)},key=null,rec=null,active=false,order=[];
+function norm(){return [$('ap').value,$('am').value,$('nm').value].map(function(s){return s.trim().replace(/\s+/g,' ')})}
+function load(k){try{var r=localStorage.getItem(k);return r?JSON.parse(r):null}catch(e){return null}}
+function save(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}
+function shuf(a){a=a.slice();for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t}return a}
+
+$('go').onclick=function(){
+var n=norm();
+if(!n[0]||!n[1]||!n[2]){$('rm').innerHTML='<div class="msg">Escribe apellido paterno, apellido materno y nombre(s).</div>';return}
+key='tales:'+n.join('|').toLowerCase();
+rec=load(key)||{n:0,s:[]};
+if(rec.n>=2){$('rm').innerHTML='<div class="msg">Ya usaste tus 2 oportunidades. Tu calificación más alta es <b>'+Math.max.apply(null,rec.s.concat([0])).toFixed(2)+' / 10</b>.</div>';return}
+rec.n++;save(key,rec);active=true;
+$('rm').innerHTML='';$('reg').style.display='none';$('ex').style.display='block';
+$('who').textContent=n[0]+' '+n[1]+', '+n[2];
+$('att').textContent='Oportunidad '+rec.n+' de 2';
+$('res').innerHTML='';$('send').style.display='';
+order=Q.map(function(q){return shuf([0,1,2,3])});
+var h='';Q.forEach(function(q,i){
+h+='<div class="q"><p>'+(i+1)+'. '+q[0]+(i>7?' <span class="tag">Ruta digital</span>':i>3?' <span class="tag">Ejercicio</span>':' <span class="tag">Teoría</span>')+'</p>';
+order[i].forEach(function(oi,k){h+='<label class="o"><input type="radio" name="q'+i+'" value="'+oi+'"> '+q[1][oi]+'</label>'});
+h+='</div>'});
+$('qs').innerHTML=h;window.scrollTo(0,0)};
+
+$('send').onclick=function(){
+if(!active)return;
+var un=Q.filter(function(q,i){return !document.querySelector('input[name=q'+i+']:checked')}).length;
+if(un&&!confirm('Te faltan '+un+' pregunta(s) por responder. ¿Enviar de todos modos?'))return;
+active=false;var ok=0;
+Q.forEach(function(q,i){var sel=document.querySelector('input[name=q'+i+']:checked');
+document.querySelectorAll('input[name=q'+i+']').forEach(function(r){r.disabled=true;
+var l=r.parentNode;if(+r.value===q[2])l.classList.add('ok');else if(r.checked)l.classList.add('ko')});
+if(sel&&+sel.value===q[2])ok++});
+var sc=ok*10/Q.length;rec.s.push(sc);save(key,rec);
+var best=Math.max.apply(null,rec.s);
+var m='<div class="msg"><b>Resultado de esta oportunidad:</b> '+ok+' de '+Q.length+' correctas → <b>'+sc.toFixed(2)+' / 10</b>.<br><b>Calificación final (la más alta):</b> '+best.toFixed(2)+' / 10.<br>';
+m+=rec.n<2?'Te queda 1 oportunidad. Repasa la teoría y vuelve a registrarte con el mismo nombre.':'Ya no tienes más oportunidades.';
+$('res').innerHTML=m+'</div>';$('send').style.display='none';
+$('res').scrollIntoView({behavior:'smooth'})};
+</script>
+</body>
+</html>
